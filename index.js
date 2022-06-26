@@ -26,7 +26,7 @@ const statisticApi = require('./src/apis/statistic.api');
 // ! ================== set port ================== //
 const app = express();
 const normalizePort = (port) => parseInt(port, 10);
-//const PORT = normalizePort(process.env.PORT || 3000);
+const PORT = normalizePort(process.env.PORT || 3000);
 
 // ! ================== setup ================== //
 app.use(express.static(path.join(__dirname, '/src/build')));
@@ -59,7 +59,9 @@ app.use(cookieParser());
 app.use(cors(corsConfig));
 
 // ! ================== Listening ... ================== //
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on port ${PORT} !!`);
+});
 
 //app.listen(PORT, () => {
   //console.log(`Server is listening on port ${PORT} !!`);
